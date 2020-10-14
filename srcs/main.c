@@ -109,7 +109,7 @@ int ft_main_loopv2(t_vm *vm, t_proc *prcs, t_player *player, int has_visu)
 		if (!has_visu && vm->dump)
 		{
 			if (print_dump(*vm))
-				return (0);
+				return (1);
 		}
 	}
 	return (0);
@@ -119,13 +119,14 @@ int ft_main_loop(t_player *player, int args_num, int has_visu)
 {
 	t_vm *vm;
 	t_proc *prcs;
+	int		temp;
 
 	prcs = NULL;
 	vm = init_vm(args_num, player[0].dump);
 	set_exec_code(vm, player);
 	init_procs(vm, player, &prcs);
-	ft_main_loopv2(vm, prcs, player, has_visu);
-	if (!has_visu)
+	temp = ft_main_loopv2(vm, prcs, player, has_visu);
+	if (!has_visu && !temp)
 		ft_printf("Contestant %d, \"%s\", has won !\n", vm->win_id, player[vm->win_id - 1].champion_name);
 	return (0);
 }
