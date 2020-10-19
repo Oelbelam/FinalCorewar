@@ -6,13 +6,13 @@
 /*   By: oelbelam <oelbelam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/19 21:04:10 by oelbelam          #+#    #+#             */
-/*   Updated: 2020/10/14 00:36:34 by oelbelam         ###   ########.fr       */
+/*   Updated: 2020/10/18 16:44:34 by oelbelam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-int delet_no_prev(t_proc **prcs, t_proc **tmp, t_proc *it_prcs)
+int		delet_no_prev(t_proc **prcs, t_proc **tmp, t_proc *it_prcs)
 {
 	t_proc *to_del;
 
@@ -26,7 +26,7 @@ int delet_no_prev(t_proc **prcs, t_proc **tmp, t_proc *it_prcs)
 	return (2);
 }
 
-int delete_prev_next(t_proc **prcs, t_proc **tmp, t_proc *it_prcs)
+int		delete_prev_next(t_proc **prcs, t_proc **tmp, t_proc *it_prcs)
 {
 	t_proc *to_del;
 
@@ -39,7 +39,7 @@ int delete_prev_next(t_proc **prcs, t_proc **tmp, t_proc *it_prcs)
 	return (2);
 }
 
-int delet_rest(t_proc *it_prcs, t_proc **tmp, t_proc **prcs)
+int		delet_rest(t_proc *it_prcs, t_proc **tmp, t_proc **prcs)
 {
 	t_proc *to_del;
 
@@ -60,11 +60,11 @@ int delet_rest(t_proc *it_prcs, t_proc **tmp, t_proc **prcs)
 	return (1);
 }
 
-int ft_delete_node(t_proc **prcs, int index, t_proc **tmp)
+int		ft_delete_node(t_proc **prcs, int index, t_proc **tmp)
 {
-	t_proc *it_prcs;
-	t_proc *to_del;
-	int i;
+	t_proc	*it_prcs;
+	t_proc	*to_del;
+	int		i;
 
 	i = -1;
 	it_prcs = *prcs;
@@ -78,25 +78,10 @@ int ft_delete_node(t_proc **prcs, int index, t_proc **tmp)
 		return (delet_rest(it_prcs, tmp, prcs));
 }
 
-void check_lives(t_vm *vm)
+int		check_ft(t_vm *vm, t_proc **prcs)
 {
-	if (vm->nbr_lives >= 21 || vm->nbr_chks == 11)
-	{
-		vm->c_to_die = vm->c_to_die - CYCLE_DELTA;
-		vm->nbr_lives = 0;
-		vm->nbr_chks = 0;
-	}
-	else if (vm->nbr_chks <= 10)
-	{
-		vm->nbr_chks++;
-		vm->nbr_lives = 0;
-	}
-}
-
-int check_ft(t_vm *vm, t_proc **prcs)
-{
-	t_proc *it_prcs;
-	int index;
+	t_proc	*it_prcs;
+	int		index;
 
 	it_prcs = *prcs;
 	index = 0;
@@ -105,9 +90,9 @@ int check_ft(t_vm *vm, t_proc **prcs)
 		if (it_prcs->live == 0)
 		{
 			if (ft_delete_node(prcs, index, &it_prcs) == 2)
-				continue;
+				continue ;
 			else
-				break;
+				break ;
 		}
 		index += 1;
 		it_prcs = it_prcs->next;

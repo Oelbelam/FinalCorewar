@@ -6,15 +6,15 @@
 /*   By: oelbelam <oelbelam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 17:51:21 by oelbelam          #+#    #+#             */
-/*   Updated: 2020/09/22 15:41:14 by oelbelam         ###   ########.fr       */
+/*   Updated: 2020/10/18 17:28:49 by oelbelam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-int		ld_check_arg(uint8_t c, t_op_arg *args)
+int			ld_check_arg(uint8_t c, t_op_arg *args)
 {
-	int error;
+	int		error;
 
 	error = 1;
 	if (((c >> 6) & 0b11) == DIR_CODE && (args->s_arg1 += 4))
@@ -30,7 +30,7 @@ int		ld_check_arg(uint8_t c, t_op_arg *args)
 	return (error);
 }
 
-int		skip_bytes(uint8_t c, int size_dir, int num_args)
+int			skip_bytes(uint8_t c, int size_dir, int num_args)
 {
 	int		bytes;
 
@@ -53,12 +53,12 @@ int		skip_bytes(uint8_t c, int size_dir, int num_args)
 	return (bytes + 1);
 }
 
-int		ld_execute(t_vm	*vm, t_proc **prcs)
+int			ld_execute(t_vm *vm, t_proc **prcs)
 {
-	short		tmp_idx;
-	int			crt_p;
-	int32_t		tmp_r2;
-	
+	short	tmp_idx;
+	int		crt_p;
+	int32_t	tmp_r2;
+
 	tmp_idx = 0;
 	crt_p = 0;
 	if ((*prcs)->args.arg1 == DIR_CODE && (crt_p = 4))
@@ -68,13 +68,14 @@ int		ld_execute(t_vm	*vm, t_proc **prcs)
 	if (vm->arena[i_mod((*prcs)->cur_pos + crt_p)] >= 1 &&
 		vm->arena[i_mod((*prcs)->cur_pos + crt_p)] <= 16)
 	{
-		(*prcs)->r[vm->arena[((*prcs)->cur_pos + crt_p) % MEM_SIZE] - 1] = tmp_r2;
+		(*prcs)->r[vm->arena[((*prcs)->cur_pos + crt_p) %
+		MEM_SIZE] - 1] = tmp_r2;
 		(*prcs)->carry = (tmp_r2 == 0) ? 1 : 0;
 	}
 	return (crt_p + 1);
 }
 
-int		ld_op(t_vm *vm, t_proc **prcs, t_proc **head, t_player **player)
+int			ld_op(t_vm *vm, t_proc **prcs, t_proc **head, t_player **player)
 {
 	int		arg_ret;
 

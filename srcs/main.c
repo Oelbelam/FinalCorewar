@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oelbelam <oelbelam@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/18 17:59:08 by oelbelam          #+#    #+#             */
+/*   Updated: 2020/10/18 17:59:08 by oelbelam         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
 void init_player(t_player *player)
@@ -94,8 +106,13 @@ void check(t_vm *vm, t_proc **prcs)
 		check_ft(vm, prcs);
 }
 
-int ft_main_loopv2(t_vm *vm, t_proc *prcs, t_player *player, int has_visu)
+int			ft_main_loopv2(t_vm *vm, t_proc *prcs, t_player *player, int has_visu)
 {
+	t_visu	vis;
+	int		key;
+	
+	if (has_visu)
+		init_visu(&vis);
 	while (1)
 	{
 		vm->cycles++;
@@ -105,20 +122,29 @@ int ft_main_loopv2(t_vm *vm, t_proc *prcs, t_player *player, int has_visu)
 		set_proc(&prcs, vm, player);
 		check(vm, &prcs);
 		if (has_visu)
-			visu(vm, prcs);
-		if (!has_visu && vm->dump)
-		{
-			if (print_dump(*vm))
+			visu(vm, prcs, player, vis);
+		if (!has_visu && vm->dump && print_dump(*vm))
 				return (1);
+	}
+	if (has_visu)
+	{
+		mvwprintw(vis.winmenu, 30, 2, "winner is : %s  ", player[vm->win_id - 1].champion_name);
+		wrefresh(vis.winmenu);
+		while (1)
+		{
+			timeout(10);
+			key = getch();
+			if (key == 'x')
+				break;
 		}
 	}
 	return (0);
 }
 
-int ft_main_loop(t_player *player, int args_num, int has_visu)
+int			ft_main_loop(t_player *player, int args_num, int has_visu)
 {
-	t_vm *vm;
-	t_proc *prcs;
+	t_vm	*vm;
+	t_proc	*prcs;
 	int		temp;
 
 	prcs = NULL;
@@ -128,7 +154,22 @@ int ft_main_loop(t_player *player, int args_num, int has_visu)
 	temp = ft_main_loopv2(vm, prcs, player, has_visu);
 	if (!has_visu && !temp)
 		ft_printf("Contestant %d, \"%s\", has won !\n", vm->win_id, player[vm->win_id - 1].champion_name);
+	ft_memdel((void **)&vm);
 	return (0);
+}
+
+void	free_env(t_player **player, int args_num)
+{
+	int	i;
+
+	i = 0;
+	while (i < args_num)
+	{
+		ft_memdel((void **)&((*player)[i]).file_name);
+		ft_memdel((void **)&((*player)[i]).exec_code);
+		i++;
+	}
+	ft_memdel((void **)player);
 }
 
 int main(int ac, char **av)
@@ -148,6 +189,7 @@ int main(int ac, char **av)
 		if ((error = parse_file(player, i)) < 0)
 		{
 			print_errors(error, player[i]);
+			free_env(&player, i + 1);
 			return (0);
 		}
 		i++;
@@ -155,4 +197,5 @@ int main(int ac, char **av)
 	if (!has_vis)
 		ft_annonce_players(player, args_num);
 	ft_main_loop(player, args_num, has_vis);
+	free_env(&player, args_num);
 }

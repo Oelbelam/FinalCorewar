@@ -6,7 +6,7 @@
 /*   By: oelbelam <oelbelam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/07 15:09:37 by oelbelam          #+#    #+#             */
-/*   Updated: 2020/03/12 12:13:31 by oelbelam         ###   ########.fr       */
+/*   Updated: 2020/10/18 17:05:50 by oelbelam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,10 @@ t_ops	get_ops(void)
 	return (g_ops);
 }
 
-
-int     get_op(t_vm *vm, t_proc **prc)
+int		get_op(t_vm *vm, t_proc **prc)
 {
-	uint8_t     op;
-	t_ops		ops;
+	uint8_t	op;
+	t_ops	ops;
 
 	op = vm->arena[(*prc)->cur_pos % MEM_SIZE];
 	ops = get_ops();
@@ -41,5 +40,5 @@ int     get_op(t_vm *vm, t_proc **prc)
 		return (1);
 	}
 	else
-		return (0);	
+		return (0);
 }
