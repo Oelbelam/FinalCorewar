@@ -76,14 +76,16 @@ int		or_execute(t_vm *vm, t_proc **prcs)
 		if (check_reg(vm, (*prcs)->cur_pos))
 			tmp_r = (*prcs)->r[vm->arena[(*prcs)->cur_pos] - 1];
 		else
-			return ((*prcs)->args.s_arg1 + (*prcs)->args.s_arg2 + (*prcs)->args.s_arg3);
+			return ((*prcs)->args.s_arg1 + (*prcs)->args.s_arg2 +
+			(*prcs)->args.s_arg3);
 	else if ((*prcs)->args.arg1 == DIR_CODE && (crt_p += 4))
 		tmp_r = convert_pos(vm, (*prcs)->cur_pos, 4);
 	else if ((*prcs)->args.arg1 == IND_CODE && (crt_p += 2))
 		tmp_r = set_ind(vm, (int[]){(*prcs)->cur_pos, 0});
 	if (!(crt_p = or_arg2_execute(prcs, vm, tmp_r, crt_p)))
-		return ((*prcs)->args.s_arg1 + (*prcs)->args.s_arg2 + (*prcs)->args.s_arg3);
-	return (crt_p + 1);
+		return ((*prcs)->args.s_arg1 + (*prcs)->args.s_arg2 +
+		(*prcs)->args.s_arg3);
+		return (crt_p + 1);
 }
 
 int		or_op(t_vm *vm, t_proc **prcs, t_proc **head, t_player **player)

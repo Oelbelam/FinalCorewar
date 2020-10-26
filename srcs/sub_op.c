@@ -12,7 +12,7 @@
 
 #include "corewar.h"
 
-static int		sub_check_arg(uint8_t c, t_op_arg *args)
+static int	sub_check_arg(uint8_t c, t_op_arg *args)
 {
 	int error;
 
@@ -32,7 +32,7 @@ static int		sub_check_arg(uint8_t c, t_op_arg *args)
 	return (error);
 }
 
-static int		sub_execute(t_vm *vm, t_proc **prcs)
+static int	sub_execute(t_vm *vm, t_proc **prcs)
 {
 	if (vm->arena[((*prcs)->cur_pos) % MEM_SIZE] >= 1 &&
 	vm->arena[((*prcs)->cur_pos) % MEM_SIZE] <= 16 &&
@@ -50,7 +50,7 @@ static int		sub_execute(t_vm *vm, t_proc **prcs)
 	return ((*prcs)->args.s_arg1 + (*prcs)->args.s_arg2 + (*prcs)->args.s_arg3);
 }
 
-int		sub_op(t_vm *vm, t_proc **prcs, t_proc **head, t_player **player)
+int			sub_op(t_vm *vm, t_proc **prcs, t_proc **head, t_player **player)
 {
 	int		arg_ret;
 
@@ -65,7 +65,8 @@ int		sub_op(t_vm *vm, t_proc **prcs, t_proc **head, t_player **player)
 	else
 	{
 		(*prcs)->cur_pos = ((*prcs)->cur_pos + 1) % MEM_SIZE;
-		(*prcs)->cur_pos = ((*prcs)->cur_pos + sub_execute(vm, prcs)) % MEM_SIZE;
+		(*prcs)->cur_pos = ((*prcs)->cur_pos +
+		sub_execute(vm, prcs)) % MEM_SIZE;
 	}
 	return (1);
 }

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_file.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/20 11:52:21 by jbouazao          #+#    #+#             */
+/*   Updated: 2020/10/20 11:52:22 by jbouazao         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
-int rd_chk_chmp_name(t_player *p, int fd) //we didnt check error case if it is too long
+int		rd_chk_chmp_name(t_player *p, int fd)
 {
 	int rd;
 
@@ -18,7 +30,7 @@ int rd_chk_chmp_name(t_player *p, int fd) //we didnt check error case if it is t
 	return (1);
 }
 
-int rd_chk_chmp_comment(t_player *p, int fd) //we didnt check error case if it is too long
+int		rd_chk_chmp_comment(t_player *p, int fd)
 {
 	int rd;
 
@@ -30,7 +42,7 @@ int rd_chk_chmp_comment(t_player *p, int fd) //we didnt check error case if it i
 	return (1);
 }
 
-int get_exec_code(t_player *p, int fd)
+int		get_exec_code(t_player *p, int fd)
 {
 	int ret;
 
@@ -45,7 +57,7 @@ int get_exec_code(t_player *p, int fd)
 	return (1);
 }
 
-int parse_file(t_player *player, int id)
+int		parse_file(t_player *player, int id)
 {
 	int fd;
 	int error;

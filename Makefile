@@ -27,9 +27,17 @@ SRCS =	srcs/main.c\
 		srcs/aff_op.c \
 		srcs/check_ft.c\
 		srcs/tools.c\
+		srcs/tools1.c\
 		srcs/f.c\
+		srcs/misc.c\
+		srcs/misc2.c\
+		srcs/visu2.c\
+		srcs/misc3.c\
+		srcs/print_dump.c
 
 OBJS = $(SRCS:.c=.o)
+
+ASM_DIR = ./asm
 
 LIBFT = ./libft
 
@@ -44,6 +52,7 @@ all: $(NAME)
 $(NAME) : $(OBJS)
 	make -C $(LIBFT) all
 	make -C $(FT_PRINTF) all
+	make -C $(ASM_DIR) all
 	gcc -o $(NAME) $(FLGS) $(OBJS) $(FT_PRINTF_LIB) -lncurses
 
 $(OBJ): %.o:%.c corewar.h
@@ -53,10 +62,12 @@ clean:
 	rm -rf $(OBJS)
 	make -C $(LIBFT) clean
 	make -C $(FT_PRINTF) clean
+	make -C $(ASM_DIR) clean
 
 fclean : clean
 	rm -rf $(NAME)
 	make -C $(LIBFT) fclean
 	make -C $(FT_PRINTF) fclean
+	make -C $(ASM_DIR) fclean
 
 re : fclean all

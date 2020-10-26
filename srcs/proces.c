@@ -12,10 +12,10 @@
 
 #include "corewar.h"
 
-t_proc *init_proc(t_vm *vm, t_player *player, int k)
+t_proc	*init_proc(t_vm *vm, t_player *player, int k)
 {
-	t_proc *new;
-	int j;
+	t_proc	*new;
+	int		j;
 
 	j = 1;
 	new = (t_proc *)ft_memalloc(sizeof(t_proc));
@@ -34,14 +34,13 @@ t_proc *init_proc(t_vm *vm, t_player *player, int k)
 	return (new);
 }
 
-void init_procs(t_vm *vm, t_player *player, t_proc **prcs)
+void	init_procs(t_vm *vm, t_player *player, t_proc **prcs)
 {
-	t_proc *tail;
-	t_proc *it_prev;
-	int i;
+	t_proc	*tail;
+	t_proc	*it_prev;
+	int		i;
 
 	i = vm->num_player;
-	//here where is the error you should fix it you mother fucker
 	while (--i > -1)
 	{
 		if (!*prcs)

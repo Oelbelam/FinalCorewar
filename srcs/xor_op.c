@@ -46,7 +46,8 @@ int		xor_arg2_execute(t_vm *vm, t_proc **prcs, int32_t value, int pos)
 	{
 		if (!check_reg(vm, i_mod((*prcs)->cur_pos + pos)))
 			return (0);
-		value ^= (*prcs)->r[vm->arena[((*prcs)->cur_pos + pos++) % MEM_SIZE] - 1];
+		value ^= (*prcs)->
+		r[vm->arena[((*prcs)->cur_pos + pos++) % MEM_SIZE] - 1];
 	}
 	else if ((*prcs)->args.arg2 == DIR_CODE)
 	{
@@ -77,16 +78,18 @@ int		xor_execute(t_vm *vm, t_proc **prcs)
 	if ((*prcs)->args.arg1 == REG_CODE && (crt_p += 1))
 	{
 		if (!check_reg(vm, i_mod((*prcs)->cur_pos)))
-			return ((*prcs)->args.s_arg1 + (*prcs)->args.s_arg2 + (*prcs)->args.s_arg3);
-		tmp_r = (*prcs)->r[vm->arena[(*prcs)->cur_pos] - 1];
+			return ((*prcs)->args.s_arg1 +
+			(*prcs)->args.s_arg2 + (*prcs)->args.s_arg3);
+			tmp_r = (*prcs)->r[vm->arena[(*prcs)->cur_pos] - 1];
 	}
 	else if ((*prcs)->args.arg1 == DIR_CODE && (crt_p += 4))
 		tmp_r = convert_pos(vm, i_mod((*prcs)->cur_pos), 4);
 	else if ((*prcs)->args.arg1 == IND_CODE && (crt_p += 2))
 		tmp_r = set_ind(vm, (int[]){(*prcs)->cur_pos, 0});
 	if (!(crt_p = xor_arg2_execute(vm, prcs, tmp_r, crt_p)))
-		return ((*prcs)->args.s_arg1 + (*prcs)->args.s_arg2 + (*prcs)->args.s_arg3);
-	return (crt_p + 1);
+		return ((*prcs)->args.s_arg1 + (*prcs)->args.s_arg2 +
+		(*prcs)->args.s_arg3);
+		return (crt_p + 1);
 }
 
 int		xor_op(t_vm *vm, t_proc **prcs, t_proc **head, t_player **player)
@@ -105,7 +108,8 @@ int		xor_op(t_vm *vm, t_proc **prcs, t_proc **head, t_player **player)
 	else
 	{
 		(*prcs)->cur_pos = ((*prcs)->cur_pos + 1) % MEM_SIZE;
-		(*prcs)->cur_pos = ((*prcs)->cur_pos + xor_execute(vm, prcs)) % MEM_SIZE;
+		(*prcs)->cur_pos = ((*prcs)->cur_pos +
+		xor_execute(vm, prcs)) % MEM_SIZE;
 	}
 	return (1);
 }

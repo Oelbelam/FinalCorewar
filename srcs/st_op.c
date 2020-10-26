@@ -30,36 +30,36 @@ int		st_check_arg(uint8_t c, t_op_arg *args)
 	return (error);
 }
 
-int		st_execute(t_vm	*vm, t_proc **prcs)
+int		st_execute(t_vm *vm, t_proc **pr)
 {
 	int32_t		tmp_r;
 	short		ind_v;
 	int			crt_p;
-	
+
 	crt_p = 0;
 	tmp_r = 0;
 	ind_v = 0;
-	if ((*prcs)->args.arg1 == REG_CODE)
+	if ((*pr)->args.arg1 == REG_CODE)
 	{
-		if (check_reg(vm, (*prcs)->cur_pos))
-			tmp_r = (*prcs)->r[vm->arena[((*prcs)->cur_pos) % MEM_SIZE] - 1];
+		if (check_reg(vm, (*pr)->cur_pos))
+			tmp_r = (*pr)->r[vm->arena[((*pr)->cur_pos) % MEM_SIZE] - 1];
 		else
-			return ((*prcs)->args.s_arg1 + (*prcs)->args.s_arg2);
+			return ((*pr)->args.s_arg1 + (*pr)->args.s_arg2);
 	}
 	crt_p++;
-	if ((*prcs)->args.arg2 == REG_CODE)
+	if ((*pr)->args.arg2 == REG_CODE)
 	{
-		if (check_reg(vm, i_mod((*prcs)->cur_pos + crt_p)))
-			(*prcs)->r[vm->arena[((*prcs)->cur_pos + crt_p) % MEM_SIZE] - 1] = tmp_r;
+		if (check_reg(vm, i_mod((*pr)->cur_pos + crt_p)))
+			(*pr)->r[vm->arena[i_mod((*pr)->cur_pos + crt_p)] - 1] = tmp_r;
 		else
-			return ((*prcs)->args.s_arg1 + (*prcs)->args.s_arg2);
+			return ((*pr)->args.s_arg1 + (*pr)->args.s_arg2);
 	}
-	else if ((*prcs)->args.arg2 == IND_CODE)
-		set_st_arena(vm, tmp_r, (int[]){(*prcs)->cur_pos, crt_p, (*prcs)->proc_clr});
-	return ((*prcs)->args.s_arg1 + (*prcs)->args.s_arg2);
+	else if ((*pr)->args.arg2 == IND_CODE)
+		wr_arena(vm, tmp_r, (int[]){(*pr)->cur_pos, crt_p, (*pr)->proc_clr});
+	return ((*pr)->args.s_arg1 + (*pr)->args.s_arg2);
 }
 
-int	st_op(t_vm *vm, t_proc **prcs, t_proc **head, t_player **player)
+int		st_op(t_vm *vm, t_proc **prcs, t_proc **head, t_player **player)
 {
 	int		arg_ret;
 

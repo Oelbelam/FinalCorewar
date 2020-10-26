@@ -12,7 +12,7 @@
 
 #include "corewar.h"
 
-int zjmp_op(t_vm *vm, t_proc **prcs, t_proc **head, t_player **player)
+int	zjmp_op(t_vm *vm, t_proc **prcs, t_proc **head, t_player **player)
 {
 	int16_t	jump;
 
@@ -21,9 +21,11 @@ int zjmp_op(t_vm *vm, t_proc **prcs, t_proc **head, t_player **player)
 	(*prcs)->cur_pos = ((*prcs)->cur_pos + 1) % MEM_SIZE;
 	if ((*prcs)->carry == 1)
 	{
-		jump = vm->arena[((*prcs)->cur_pos) % MEM_SIZE] << 8 | vm->arena[((*prcs)->cur_pos + 1) % MEM_SIZE];
+		jump = vm->arena[((*prcs)->cur_pos) % MEM_SIZE] << 8 |
+		vm->arena[((*prcs)->cur_pos + 1) % MEM_SIZE];
 		jump = jump % IDX_MOD;
-		(*prcs)->cur_pos = (((*prcs)->cur_pos - 1 + jump) + MEM_SIZE) % MEM_SIZE;
+		(*prcs)->cur_pos = (((*prcs)->cur_pos - 1 + jump) +
+		MEM_SIZE) % MEM_SIZE;
 	}
 	else
 	{

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   set_vm_code.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/19 13:43:15 by jbouazao          #+#    #+#             */
+/*   Updated: 2020/10/19 13:43:16 by jbouazao         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
-void set_exec_code(t_vm *vm, t_player *player)
+void	set_exec_code(t_vm *vm, t_player *player)
 {
 	int position;
 	int i;

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_bits.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/19 13:04:55 by jbouazao          #+#    #+#             */
+/*   Updated: 2020/10/19 13:04:56 by jbouazao         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
-int32_t	u_to_int(uint8_t *arena, int idx, int size)
+int32_t		u_to_int(uint8_t *arena, int idx, int size)
 {
 	int32_t bit;
 	int		i;
@@ -31,9 +43,9 @@ uint32_t	void_to_int(unsigned char *str)
 	return (bit);
 }
 
-uint32_t			read_chk_bytes(int fd)
+uint32_t	read_chk_bytes(int fd)
 {
-	int	rd;
+	int				rd;
 	unsigned char	buffer[4];
 
 	rd = 0;

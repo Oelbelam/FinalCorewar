@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahmansou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: oelbelam <oelbelam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/27 16:35:38 by ahmansou          #+#    #+#             */
-/*   Updated: 2019/11/20 10:54:02 by oelbelam         ###   ########.fr       */
+/*   Updated: 2020/10/20 13:25:04 by oelbelam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,5 @@ char	*ft_strncat(char *dest, const char *src, size_t n)
 		j++;
 	}
 	dest[i] = '\0';
-	return (dest) ;
+	return (dest);
 }

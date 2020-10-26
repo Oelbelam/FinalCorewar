@@ -127,13 +127,28 @@ short				convert_int_pos(t_vm *vm, int pos, int size);
 int32_t				convert_short_pos(t_vm *vm, short pos, int size);
 int32_t				convert_pos(t_vm *vm, int pos, int size);
 int32_t				set_ind(t_vm *vm, int *pos);
-void				set_st_arena(t_vm *vm, int32_t value, int *pos);
-void				set_sti_arena(t_vm *vm,
+void				wr_arena(t_vm *vm, int32_t value, int *pos);
+void				wri_arena(t_vm *vm,
 t_proc *prcs, int32_t index, int32_t pos);
 t_player			*ft_main(int ac,
 char **av, int *has_vis, int *arg_num);
-
+void				free2d(char ***s, int av_num);
+int					check_files(char **av);
+int					get_n_args(char **av, char ***args);
+int					get_other_args(char **av, char ***args, int *dump, int ac);
+int					is_cor_file(char *av);
 int					skip_bytes(uint8_t c, int size_dir, int num_args);
+int					is_num_neg(char *s);
+void				init_visu(t_visu *vis);
+void				print_warz1(t_visu *vis);
+void				print_proc(t_proc *proc, t_visu vis, t_vm *vm);
+void				check(t_vm *vm, t_proc **prcs);
+void				set_proc(t_proc **prcs, t_vm *vm, t_player *player);
+void				ft_annonce_players(t_player *players, int args_num);
+void				re_init_live(t_proc **proc);
+void				init_player(t_player *player);
+int					print_dump(t_vm vm);
+
 int					live_op(t_vm *vm, t_proc
 						**proc, t_proc **head, t_player **player);
 int					ld_op(t_vm *vm,

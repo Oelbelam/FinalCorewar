@@ -12,7 +12,7 @@
 
 #include "corewar.h"
 
-int get_dump(char **av, int *i, int *dump, int *dump_found)
+int		get_dump(char **av, int *i, int *dump, int *dump_found)
 {
 	if ((*dump_found) == 1 || !av[(*i) + 1] || !is_num_neg(av[(*i) + 1]))
 		return (-3);
@@ -22,7 +22,7 @@ int get_dump(char **av, int *i, int *dump, int *dump_found)
 	return ((*dump));
 }
 
-int get_other_args(char **av, char ***args, int *dump, int ac)
+int		get_other_args(char **av, char ***args, int *dump, int ac)
 {
 	int i;
 	int j;
@@ -45,13 +45,13 @@ int get_other_args(char **av, char ***args, int *dump, int ac)
 				if (!(*args)[j])
 				{
 					(*args)[j] = ft_strdup(av[i]);
-					break;
+					break ;
 				}
 	}
 	return (1);
 }
 
-int check_dups(char **args)
+int		check_dups(char **args)
 {
 	int i;
 	int j;
@@ -68,7 +68,7 @@ int check_dups(char **args)
 	return (0);
 }
 
-void free2d(char ***s, int av_num)
+void	free2d(char ***s, int av_num)
 {
 	int i;
 
