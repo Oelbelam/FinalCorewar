@@ -34,6 +34,7 @@ t_vm		*init_vm(int args_num, int dump)
 	vm->dump = dump;
 	vm->nbr_chks = 0;
 	vm->index = 0;
+	vm->nbr_of_args = 0;
 	return (vm);
 }
 

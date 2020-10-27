@@ -148,6 +148,7 @@ void				ft_annonce_players(t_player *players, int args_num);
 void				re_init_live(t_proc **proc);
 void				init_player(t_player *player);
 int					print_dump(t_vm vm);
+void				free_procs(t_proc **prcs);
 
 int					live_op(t_vm *vm, t_proc
 						**proc, t_proc **head, t_player **player);

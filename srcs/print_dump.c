@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   print_dump.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbouazao <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: oelbelam <oelbelam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 12:35:03 by jbouazao          #+#    #+#             */
-/*   Updated: 2020/10/20 12:35:06 by jbouazao         ###   ########.fr       */
+/*   Updated: 2020/10/27 14:34:29 by oelbelam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-int		print_dump(t_vm vm)
+int print_dump(t_vm vm)
 {
 	short it;
 
@@ -31,4 +31,17 @@ int		print_dump(t_vm vm)
 		return (1);
 	}
 	return (0);
+}
+
+void free_procs(t_proc **prcs)
+{
+	t_proc *to_del;
+
+	while ((*prcs)->next)
+	{
+		to_del = (*prcs);
+		(*prcs) = (*prcs)->next;
+		ft_memdel((void **)&to_del);
+	}
+	ft_memdel((void **)prcs);
 }

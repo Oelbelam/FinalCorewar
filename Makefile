@@ -28,7 +28,7 @@ SRCS =	srcs/main.c\
 		srcs/check_ft.c\
 		srcs/tools.c\
 		srcs/tools1.c\
-		srcs/f.c\
+		srcs/manage_file.c\
 		srcs/misc.c\
 		srcs/misc2.c\
 		srcs/visu2.c\

@@ -31,6 +31,8 @@ t_proc	*init_proc(t_vm *vm, t_player *player, int k)
 	new->prcs_num = k;
 	new->proc_clr = player->pid;
 	new->next = NULL;
+	init_args(&(new->args));
+	new->prev = NULL;
 	return (new);
 }
 
