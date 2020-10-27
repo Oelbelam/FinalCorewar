@@ -6,7 +6,7 @@
 /*   By: oelbelam <oelbelam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 16:45:39 by oelbelam          #+#    #+#             */
-/*   Updated: 2020/10/18 17:03:54 by oelbelam         ###   ########.fr       */
+/*   Updated: 2020/10/27 16:26:30 by oelbelam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,8 @@ void				re_init_live(t_proc **proc);
 void				init_player(t_player *player);
 int					print_dump(t_vm vm);
 void				free_procs(t_proc **prcs);
+void				manage_player(t_player **players,
+						int i, char **args, int dump);
 
 int					live_op(t_vm *vm, t_proc
 						**proc, t_proc **head, t_player **player);
