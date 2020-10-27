@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ass.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahmansou <ahmansou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oelbelam <oelbelam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 09:03:28 by ahmansou          #+#    #+#             */
-/*   Updated: 2020/10/20 12:26:30 by ahmansou         ###   ########.fr       */
+/*   Updated: 2020/10/27 18:11:28 by oelbelam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ void				print_add_sub(t_token *token, int fd);
 void				print_and_xor(t_token *token, int fd);
 void				print_sti(t_token *token, int fd);
 void				print_ldi(t_token *token, int fd);
+void				print_aff(t_token *token, int fd);
 
 int					is_num(char *s);
 int					is_num_neg(char *s);

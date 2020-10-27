@@ -6,7 +6,7 @@
 /*   By: oelbelam <oelbelam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 12:28:45 by oelbelam          #+#    #+#             */
-/*   Updated: 2020/10/18 16:36:27 by oelbelam         ###   ########.fr       */
+/*   Updated: 2020/10/27 18:19:55 by oelbelam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int		aff_op(t_vm *vm, t_proc **prcs, t_proc **head, t_player **player)
 		(*prcs)->cur_pos = ((*prcs)->cur_pos + 1) % MEM_SIZE;
 		if (vm->arena[(*prcs)->cur_pos] >= 1 &&
 		vm->arena[(*prcs)->cur_pos] <= 16)
-			ft_printf("AFF : %c\n",
-			(char)((*prcs)->r[vm->arena[(*prcs)->cur_pos]] % 256));
+			printf("AFF : %c\n",
+			(char)(((*prcs)->r[vm->arena[(*prcs)->cur_pos] - 1] % 256)));
 		(*prcs)->cur_pos = ((*prcs)->cur_pos + 1) % MEM_SIZE;
 	}
 	return (1);

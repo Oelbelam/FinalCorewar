@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_content.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahmansou <ahmansou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oelbelam <oelbelam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 11:36:22 by ahmansou          #+#    #+#             */
-/*   Updated: 2020/10/20 12:19:08 by ahmansou         ###   ########.fr       */
+/*   Updated: 2020/10/27 18:16:41 by oelbelam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,7 @@ void		print_exec_code(int fd, t_token *tk)
 {
 	t_token	*ttoken;
 
-	if (!(ttoken = tk))
-		ft_printf("nah");
+	ttoken = tk;
 	while (ttoken)
 	{
 		if (ttoken->type == 4 && (ttoken->code == 1 || ttoken->code == 9 ||
@@ -81,6 +80,8 @@ void		print_exec_code(int fd, t_token *tk)
 			print_ldi(ttoken, fd);
 		if (ttoken->type == 4 && ttoken->code == 11)
 			print_sti(ttoken, fd);
+		if (ttoken->type == 4 && ttoken->code == 16)
+			print_aff(ttoken, fd);
 		ttoken = ttoken->next;
 	}
 }
