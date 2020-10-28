@@ -6,7 +6,7 @@
 /*   By: oelbelam <oelbelam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 11:51:00 by ahmansou          #+#    #+#             */
-/*   Updated: 2020/10/27 20:01:35 by oelbelam         ###   ########.fr       */
+/*   Updated: 2020/10/28 18:48:42 by oelbelam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,18 @@ static t_token	*new_op_token(char **split)
 int				get_op(char *line, t_ass_env *ass)
 {
 	char		**split;
+	char		*temp;
+	int			k;
 	int			j;
 
-	split = ft_split_whitespaces(line);
+	if ((k = has_comment(line)) != 0)
+	{
+		temp = ft_strsub(line, 0, k);
+		split = ft_split_whitespaces(temp);
+		ft_memdel((void **)&temp);
+	}
+	else
+		split = ft_split_whitespaces(line);
 	j = 0;
 	if (!split[0])
 		return (return_err(&split, 0));

@@ -6,7 +6,7 @@
 /*   By: oelbelam <oelbelam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 09:03:28 by ahmansou          #+#    #+#             */
-/*   Updated: 2020/10/27 18:11:28 by oelbelam         ###   ########.fr       */
+/*   Updated: 2020/10/28 18:36:38 by oelbelam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ void				print_and_xor(t_token *token, int fd);
 void				print_sti(t_token *token, int fd);
 void				print_ldi(t_token *token, int fd);
 void				print_aff(t_token *token, int fd);
+int					has_comment(char *line);
 
 int					is_num(char *s);
 int					is_num_neg(char *s);

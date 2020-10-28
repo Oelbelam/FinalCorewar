@@ -6,7 +6,7 @@
 /*   By: oelbelam <oelbelam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 17:59:08 by oelbelam          #+#    #+#             */
-/*   Updated: 2020/10/18 17:59:08 by oelbelam         ###   ########.fr       */
+/*   Updated: 2020/10/28 18:40:04 by oelbelam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ int		ft_main_loopv2(t_vm *vm, t_proc *prcs, t_player *player, int has_visu)
 		if (has_visu)
 			visu(vm, prcs, player, vis);
 		if (!has_visu && vm->dump && print_dump(*vm))
+		{
+			free_procs(&prcs);
 			return (1);
+		}
 	}
 	if (has_visu)
 		print_win(player[vm->win_id - 1].champion_name, vis);

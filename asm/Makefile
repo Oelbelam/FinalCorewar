@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ahmansou <ahmansou@student.42.fr>          +#+  +:+       +#+         #
+#    By: oelbelam <oelbelam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/25 14:48:59 by ahmansou          #+#    #+#              #
-#    Updated: 2020/10/20 12:43:34 by ahmansou         ###   ########.fr        #
+#    Updated: 2020/10/28 18:34:23 by oelbelam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,8 @@ SRCS =  src/ass.c\
 		src/op_sti.c\
 		src/op_ldi.c\
 		src/op_aff.c\
-		src/atoi_base.c
+		src/atoi_base.c\
+		src/misc5.c
 
 OBJS = $(SRCS:.c=.o) 
 
